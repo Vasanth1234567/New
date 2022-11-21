@@ -1,0 +1,30 @@
+a{
+    text-decoration:none;
+    color: black;
+}
+.ff{
+    background: pink;
+    width: 200px;
+    margin-top: 25vh;
+}
+.bf{
+    background: blue;
+    width: 200px;
+}
+.wf{
+    background: yellow;
+    width: 200px;
+}
+.ff:hover{
+    background: red;
+}
+.bf:hover{
+    background: green;
+}
+.wf:hover{
+    background: gray;
+}
+h1{
+    margin: 10px auto;
+    text-align: center;
+}

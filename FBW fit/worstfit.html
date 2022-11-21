@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worst Fit</title>
+</head>
+<body>
+    <script>
+        function worst(){
+        function worstFit(blockSize, m,
+                          processSize, n)
+        {
+            let allocation = new Array(n);
+            for(let i = 0; i < allocation.length; i++)
+                allocation[i] = -1;
+            for(let i = 0; i < n; i++)
+            {
+                let wstIdx = -1;
+                for(let j = 0; j < m; j++)
+                {
+                    if (blockSize[j] >= processSize[i])
+                    {
+                        if (wstIdx == -1)
+                            wstIdx = j;
+                        else if (blockSize[wstIdx] <
+                                 blockSize[j])
+                            wstIdx = j;
+                    }
+                }
+                if (wstIdx != -1)
+                {
+                    allocation[i] = wstIdx;
+                    blockSize[wstIdx] -= processSize[i];
+                }
+            }
+            
+            document.write("ProcessNo.  ProcessSize BlockNo.<br>");
+                for (let i = 0; i < n; i++)
+                {
+                    let s = "Not Allocated"
+                    if (allocation[i] > -1){
+                        document.write((i+1)+"__________"+processSize[i]+"________"+(allocation[i] + 1)+"<br>");
+                    }
+                    else
+                        document.write((i+1) + "__________" +processSize[i] + "________"+"Not Allocated"+"<br>");
+                     
+                }
+        }
+            const blockSize = [];
+            x1=Number(prompt("Enter the number of blocks : "));
+            for(let i=0;i<x1;i++){
+                let x=Number(prompt("Enter the block size of "+(i+1)+"  : "));
+                blockSize.push(x);
+            }
+            y1=Number(prompt("Enter the number of process : "));
+                const processSize = [];
+                for(let i=0;i<y1;i++){
+                let y=Number(prompt("Enter the process size of "+(i+1)+" : "));
+                processSize.push(y);
+            }
+        let m = blockSize.length;
+        let n = processSize.length;
+        worstFit(blockSize, m, processSize, n);
+        }
+        </script>
+        <button onclick="worst()">Start Worst Fit</button>
+</body>
+</html>
